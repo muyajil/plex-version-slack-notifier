@@ -35,7 +35,7 @@ def get_current_version():
     current_version = requests.get('https://plex.tv/api/downloads/1.json?channel=plexpass').json()
     try:
         current_version = json.dumps(current_version["computer"]["Linux"]["version"], indent=2)
-        return current_version
+        return current_version.strip('"')
     except:
         raise RuntimeError()
 
